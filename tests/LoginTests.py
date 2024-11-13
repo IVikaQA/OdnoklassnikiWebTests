@@ -43,3 +43,13 @@ def test_empty_password(browser):
     with allure.step('5.Proverka, chto na stranice avtorizacii pri pustom pole parolya i posle klika na knopku - Vojti v Odnoklassniki, voznikaet tekst - Vvedite parol'):
         assert LoginPage.get_error_text() == EMPTY_PASSWORD_ERROR
 
+#Temp
+@allure.feature('Test Login Page')
+@allure.story('Negative:Autentifikaciya:Ne zapolnyaem login and parol')
+def test_empty_password(browser):
+    with allure.step('1.Otkryvaem brauzer s ukazannym URL'):
+        BasePage(browser).get_url(BASE_URL)
+    with allure.step('2.Nachinaem rabotu so stranicej autentifikacii'):
+        LoginPage = LoginPageHelper(browser)
+    with allure.step('3.Nazhimaem na knopku "Vojti v Odnoklassniki"'):
+        LoginPage.click_button()
