@@ -29,3 +29,7 @@ class BasePage:
     #Функция перехода по URL
     def get_url(self,url):
         return self.driver.get(url)
+
+    #Функция клика по кнопке
+    def click_button(self, webElement):
+        self.find_element(webElement).click()
