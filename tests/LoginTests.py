@@ -1,6 +1,6 @@
 from core.BaseTest import browser
 from pages.BasePage import BasePage
-from pages.LoginPage import LoginPageHelper
+from pages.LoginPage import LoginPageHelper, LoginPageLocators
 import allure
 
 BASE_URL = "https://ok.ru/"
@@ -52,4 +52,4 @@ def test_empty_password(browser):
     with allure.step('2.Nachinaem rabotu so stranicej autentifikacii'):
         LoginPage = LoginPageHelper(browser)
     with allure.step('3.Nazhimaem na knopku "Vojti v Odnoklassniki"'):
-        LoginPage.click_button()
+        LoginPage.click_button(LoginPageLocators.LOGIN_BUTTON)
