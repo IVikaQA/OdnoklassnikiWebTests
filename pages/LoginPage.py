@@ -49,6 +49,9 @@ class LoginPageHelper(BasePage):
         except Exception as e:
             print(f"Ошибка при нажатии на кнопку входа: {e}")
             raise
+    #Функция клика на кнопку - Универсальная
+    def click_button(self, locator):
+        self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
 
     #Функция получения текст из элемента
     def get_error_text(self):
