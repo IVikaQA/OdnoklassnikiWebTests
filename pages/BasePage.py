@@ -8,10 +8,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 # Вызываем класс-описатель: как ждать ?
 from selenium.webdriver.support import expected_conditions
 
+
 class BasePage:
     #Конструктор класс
     def __init__(self, driver):
-        #
+        #Здесь происходит присвоение значение параметра driver атрибуту self.driver
+        #экземпляра класса BasePage
         self.driver = driver
 
     #Функция поиска элментов на странице
@@ -22,7 +24,7 @@ class BasePage:
         #1.Передаем в функцию локатор
         #2.Ждем,что элемент стал видимым - 5 сек
         #3.Возвращаем элемент класса WebElement (Значит доступны метожды работы класса WebElement)
-        return WebDriverWait(self.driver).until(expected_conditions.visibility_of_element_located(locator), message=f"Не удалось найти элемент {locator}")
+        return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator), message=f"Не удалось найти элемент {locator}")
 
     #Функция перехода по URL
     def get_url(self,url):
