@@ -1,7 +1,7 @@
 # Родитель-страница для наших страниц
 # Здесь опишем, то как мы будем искать элементы на странице +
 # метод,которым будут пользоваться предки
-
+import allure
 # Вызываем класс-задержку для WebDriver.
 #Например,кликнули на кнопку и ждем появление всплывающего окна 7 сек
 from selenium.webdriver.support.wait import WebDriverWait
@@ -27,5 +27,10 @@ class BasePage:
         return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator), message=f"Не удалось найти элемент {locator}")
 
     #Функция перехода по URL
+    @allure.step('Открываем главную страницу ok.ru')
     def get_url(self,url):
         return self.driver.get(url)
+
+    #Функция делает скриншот экрана
+    def attach_screenshot(self):
+        allure.attach(self.driver.get_screenshot_as_png(), "скриншот", allure.attachment_type.PNG)
