@@ -1,3 +1,5 @@
+import allure
+
 from pages.BasePage import BasePage
 #Импорт класса By, который поддерживает разнные способы обращения к элементам страницы
 from selenium.webdriver.common.by import By
@@ -18,9 +20,11 @@ class LoginPageLocators:
     ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
 
 class LoginPageHelper(BasePage):
+
     def __init__(self, driver):
-        self.driver = driver
-        self.check_page()
+        with allure.step('Открываем форму авторизации'):
+            self.driver = driver
+            self.check_page()
 
     #Функция проверки того,что страница прогрузилась верно:
     #Тоесть проверяем,что элементы, чьи локаторы описаны выше,есть на странице - видимы
@@ -42,28 +46,35 @@ class LoginPageHelper(BasePage):
             raise
 
     #Функция нажатия на кнопку "Войти в Одноклассники"
+    @allure.step('Нажимаем на кнопку "Войти в Одноклассники"')
     def click_login(self):
         #В классе,где находится метод click, есть и другие полезные методы работы с элементами формы
         try:
+            #Делаем скриншот
+            self.attach_screenshot()
             self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
         except Exception as e:
             print(f"Ошибка при нажатии на кнопку входа: {e}")
             raise
 
     #Функция получения текст из элемента
+    @allure.step('Получаем текст ошибки')
     def get_error_text(self):
         try:
+            self.attach_screenshot()
             return self.find_element(LoginPageLocators.ERROR_TEXT).text
         except Exception as e:
             print(f"Ошибка при получении текста ошибки: {e}")
             return None  # Возвращаем None, если текст не удалось получить
 
-    #Функция заполнения поля текстом
+    #Функция заполнения поля логина текстом
+    @allure.step('Заполняем поле логина на странице авторизации')
     def push_text(self, *value: str):
         try:
             # Объединяем все элементы value в одну строку
             text_to_send = ''.join(value)
             self.find_element(LoginPageLocators.LOGIN_FIELD).send_keys(text_to_send)
+            self.attach_screenshot()
         except Exception as e:
             print(f"Ошибка при вводе текста: {e}")
             raise  # Повторно выбрасываем последнее исключение
