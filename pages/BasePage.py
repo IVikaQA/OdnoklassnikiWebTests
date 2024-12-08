@@ -8,8 +8,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 # Вызываем класс-описатель: как ждать ?
 from selenium.webdriver.support import expected_conditions
 
+class BasePageLocators:
+    
 
-class BasePage:
+class BasePageHelper:
     #Конструктор класс
     def __init__(self, driver):
         #Здесь происходит присвоение значение параметра driver атрибуту self.driver
@@ -25,6 +27,10 @@ class BasePage:
         #2.Ждем,что элемент стал видимым - 5 сек
         #3.Возвращаем элемент класса WebElement (Значит доступны метожды работы класса WebElement)
         return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator), message=f"Не удалось найти элемент {locator}")
+
+    #Функция поиска элемента в выпадающем списке
+    def find_elements(self, locator, time=5):
+        return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_all_elements_located(locator),message=f"Не удалось найти элементы {locator}")
 
     #Функция перехода по URL
     @allure.step('Открываем главную страницу ok.ru')
