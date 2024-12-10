@@ -1,4 +1,5 @@
-#Страница
+#Страница Помощи
+#Переход на страницу помощи осуществялется со страницы регистрации: https://ok.ru/dk?st.cmd=anonymRegistrationEnterPhone
 
 import allure
 from pages.BasePage import BasePageHelper
@@ -6,6 +7,7 @@ from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 
 class AdvertisementCabinetHelpLocators:
+    #Вкладка: Рекламный кабинет
     TITLE = (By.XPATH, '//span[text()="Рекламный кабинет"]')
 
 class AdvertisementCabinetHelpHelper(BasePageHelper):
