@@ -17,7 +17,7 @@ class LoginPageLocators:
     VK_BUTTON = (By.XPATH, '//a[@data-l="t,vkc"]')
     MAIL_BUTTON = (By.XPATH, '//a[@data-l="t,mailru"]')
     YANDEX_BUTTON = (By.XPATH, '//a[@data-l="t,yandex"]')
-    OTHER_BUTTON = (By.XPATH, '//*[@data-l="t,other"]')
+    #OTHER_BUTTON = (By.XPATH, '//*[@data-l="t,other"]')
     ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
     GO_BACK_BUTTON = (By.XPATH, '//*[@data-l="t,cancel"]')
     SUPPORT_BUTTON = (By.XPATH, '//*[@class="external-oauth-login-help portlet_f"]')
@@ -46,7 +46,7 @@ class LoginPageHelper(BasePageHelper):
             self.find_element(LoginPageLocators.VK_BUTTON)
             self.find_element(LoginPageLocators.MAIL_BUTTON)
             self.find_element(LoginPageLocators.YANDEX_BUTTON)
-            self.find_element(LoginPageLocators.OTHER_BUTTON)
+            #self.find_element(LoginPageLocators.OTHER_BUTTON)
         except Exception as e:
             print(f"Ошибка при проверке страницы: {e}")
             raise

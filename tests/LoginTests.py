@@ -11,7 +11,6 @@ EMPTY_LOGIN_ERROR = "Введите логин"
 EMPTY_PASSWORD_ERROR = "Введите пароль"
 WRONG_PASSWORD = '1'
 
-
 #Тест 1
 @allure.suite('Проверка формы авторизации')
 @allure.title('Проверка ошибки при пустой форме авторизации')

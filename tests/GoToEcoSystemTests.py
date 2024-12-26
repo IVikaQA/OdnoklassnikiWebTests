@@ -1,5 +1,5 @@
 from core.BaseTest import browser
-from pages.BasePage import BasePageHelper, BasePageLocators
+from pages.BasePage import BasePageHelper
 from pages.LoginPage import LoginPageHelper
 from pages.VKEcoSystemPage import VKEcoSystemPageHelper
 import allure
