@@ -3,7 +3,7 @@ from pages.BasePage import BasePageHelper
 from pages.LoginPage import LoginPageHelper
 import allure
 
-from tests.testRecovery import LOGIN_TEXT
+from tests.test_Recovery import LOGIN_TEXT
 
 BASE_URL = "https://ok.ru/"
 LOGIN_TEXT
